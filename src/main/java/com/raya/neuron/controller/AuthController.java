@@ -3,6 +3,7 @@ package com.raya.neuron.controller;
 import com.raya.neuron.dto.AuthenticationRequest;
 import com.raya.neuron.dto.AuthenticationResponse;
 import com.raya.neuron.dto.RegisterRequest;
+import com.raya.neuron.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,13 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthController {
 
+    private final AuthenticationService service;
+
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
-        return null;
+        return ResponseEntity.ok(service.register(request));
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthenticationRequest request) {
-        return null;
+        return ResponseEntity.ok(service.authenticate(request));
     }
 }
